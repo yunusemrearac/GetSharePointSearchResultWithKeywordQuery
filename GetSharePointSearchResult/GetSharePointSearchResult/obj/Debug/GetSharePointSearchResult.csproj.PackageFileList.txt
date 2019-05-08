@@ -1,0 +1,1 @@
+bin\Debug\GetSharePointSearchResult.wsp
