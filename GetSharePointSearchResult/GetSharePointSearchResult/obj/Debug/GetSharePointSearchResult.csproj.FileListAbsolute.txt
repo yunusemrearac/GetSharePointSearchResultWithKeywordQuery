@@ -47,6 +47,5 @@ C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult
 C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\bin\Debug\Microsoft.Office.Server.Search.Connector.xml
 C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\bin\Debug\Microsoft.Office.DocumentManagement.xml
 C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\bin\Debug\Microsoft.Office.Policy.xml
-C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\obj\Debug\GetSharePointSearchResult.csprojResolveAssemblyReference.cache
 C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\obj\Debug\GetSharePointSearchResult.dll
 C:\Users\spsetup\documents\visual studio 2015\Projects\GetSharePointSearchResult\GetSharePointSearchResult\obj\Debug\GetSharePointSearchResult.pdb

@@ -1,5 +1,5 @@
-﻿using Microsoft.SharePoint;
-using Microsoft.SharePoint.Search.Query;
+﻿using Microsoft.Office.Server.Search.Query;
+using Microsoft.SharePoint;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,33 +16,31 @@ namespace GetSharePointSearchResult.GetSharePointSearchResult
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            using (SPSite site = SPContext.Current.Site)
+            SPSite site = SPContext.Current.Site;
+            KeywordQuery kq = new KeywordQuery(site);
+            kq.SourceId = new Guid("8413cd39-2156-4e00-b54d-11efd9abdb89");
+            kq.QueryText = "* " + searchText.Text;
+            kq.SelectProperties.Add("Title");
+            kq.SelectProperties.Add("Path");
+            kq.RowLimit = 20;
+            ResultTableCollection resultTables = new SearchExecutor().ExecuteQuery(kq);
+
+            DataTable resultDataTable = resultTables.FirstOrDefault().Table;
+
+            List<SearchResult> searchResultList = new List<SearchResult>();
+
+            foreach (DataRow row in resultDataTable.Rows)
             {
-                KeywordQuery kq = new KeywordQuery(site);
-                kq.SourceId = new Guid("8413cd39-2156-4e00-b54d-11efd9abdb89");
-                kq.QueryText = "* " + searchText.Text;
-                kq.SelectProperties.Add("Title");
-                kq.SelectProperties.Add("Path");
-                kq.RowLimit = 20;
-                ResultTableCollection resultTables = new SearchExecutor().ExecuteQuery(kq);
+                SearchResult searchResult = new SearchResult();
 
-                DataTable resultDataTable = resultTables.FirstOrDefault().Table;
+                searchResult.Title = row["Title"].ToString();
+                searchResult.Url = row["Path"].ToString();
 
-                List<SearchResult> searchResultList = new List<SearchResult>();
-
-                foreach (DataRow row in resultDataTable.Rows)
-                {
-                    SearchResult searchResult = new SearchResult();
-
-                    searchResult.Title = row["Title"].ToString();
-                    searchResult.Url = row["Path"].ToString();
-
-                    searchResultList.Add(searchResult);
-                }
-
-                rptSearch.DataSource = searchResultList;
-                rptSearch.DataBind();
+                searchResultList.Add(searchResult);
             }
+
+            rptSearch.DataSource = searchResultList;
+            rptSearch.DataBind();
         }
 
         public class SearchResult

@@ -8,10 +8,10 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GetSharePointSearchResultUserControl.ascx.cs" Inherits="GetSharePointSearchResult.GetSharePointSearchResult.GetSharePointSearchResultUserControl" %>
 
 <asp:TextBox ID="searchText" runat="server"></asp:TextBox>
-<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" />
+<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
 
 <asp:Repeater ID="rptSearch" runat="server">
     <ItemTemplate>
-        <a href="<%# Eval("Url") %>"><%# Eval("Title") %></a>
+        <p><a href="<%# Eval("Url") %>"><%# Eval("Title") %></a></p>
     </ItemTemplate>
 </asp:Repeater>
